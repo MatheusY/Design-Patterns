@@ -2,8 +2,8 @@ package br.com.alura.loja.orcamento;
 
 import java.math.BigDecimal;
 
-import br.com.alura.loja.situacao.EmAnalise;
-import br.com.alura.loja.situacao.SituacaoOrcamento;
+import br.com.alura.loja.orcamento.situacao.EmAnalise;
+import br.com.alura.loja.orcamento.situacao.SituacaoOrcamento;
 
 public class Orcamento {
 
