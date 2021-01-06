@@ -1,11 +1,18 @@
 package br.com.alura.loja.pedido;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import br.com.alura.loja.orcamento.Orcamento;
+import br.com.alura.loja.pedido.acao.AcaoAposGeraPedido;
 
 public class GeraPedidoHandler {
-
+	
+	List<AcaoAposGeraPedido> acoes;
+	
+	public GeraPedidoHandler(List<AcaoAposGeraPedido> acoes) {
+		this.acoes = acoes;
+	}
 	//Injeção de dependencias
 	
 	public void execute(GeraPedido dados) {
@@ -13,7 +20,6 @@ public class GeraPedidoHandler {
 		
 		Pedido pedido = new Pedido(dados.getCliente(), LocalDateTime.now(), orcamento);
 		
-		System.out.println("Salvar pedido no banco de dados");
-		System.out.println("Enviar email com dados do novo pedido");
+		acoes.forEach(a -> a.executarAcao(pedido));
 	}
 }
